@@ -1,0 +1,220 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  background-color: #224248;
+  margin: 10px;
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.todo-container h1 {
+  margin: 30px 0;
+  color: #ffe2af;
+  font-size: 2.5rem;
+}
+
+.bottom-text {
+  text-align: center;
+}
+
+.todo-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 25px;
+  padding: 25px;
+  background: linear-gradient(90deg, #24b1b1, #007979);
+  width: 350px;
+  height: 350px;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(251, 251, 251, 1);
+}
+
+.todo-header h3 {
+  align-self: center;
+  font-size: 2rem;
+  color: #ffe2af;
+}
+
+.todo-header input {
+  width: 100%;
+  padding: 8px 8px;
+  border: none;
+  border-radius: 5px;
+}
+.todo-header .todo-btn {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 8px;
+  background-color: #e37434;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.main-container {
+  color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.main-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.top-text {
+  font-size: 1.8rem;
+  color: #ffe2af;
+}
+.main-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+.todo-select {
+  border: none;
+  background-color: #e37434;
+  padding: 8px;
+  color: white;
+  font-weight: bold;
+}
+
+.todo-select .select-violet {
+  background-color: violet;
+}
+.select-green {
+  background-color: green;
+}
+.select-red {
+  background-color: red;
+}
+.todo-card {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: linear-gradient(90deg, #24b1b1, #007979);
+  box-shadow: 0 0 15px rgba(251, 251, 251, 1);
+  border-radius: 10px;
+  width: 405px;
+}
+.todo-card-select {
+  border: none;
+  background-color: #e37434;
+  padding: 5px;
+  color: white;
+  font-weight: bold;
+}
+.card-text {
+  color: #ffe2af;
+}
+.card-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  margin-top: 10px;
+}
+.btn {
+  padding: 8px 40px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.update-field {
+  padding: 8px 8px;
+  border: none;
+  border-radius: 5px;
+}
+.update-name {
+  background-color: #e0920c;
+}
+.card-status {
+  display: flex;
+  gap: 6px;
+  margin-top: 5px;
+  width: 100%;
+}
+.green-btn {
+  background-color: hsl(120, 35%, 54%);
+}
+.red-btn {
+  background-color: #e93232;
+}
+.update-field:focus {
+  outline: 3px solid #e37434;
+}
+.update-name:hover {
+  background-color: hsl(38, 90%, 36%);
+}
+.todo-header .todo-btn:hover {
+  background-color: hsl(22, 76%, 45%);
+}
+
+.todo-header input:focus {
+  outline: 3px solid #e37434;
+}
+.todo-select:focus {
+  outline: none;
+}
+.todo-card-select:focus {
+  outline: none;
+}
+.green-btn:hover {
+  background-color: hsl(120, 35%, 44%);
+}
+.red-btn:hover {
+  background-color: hsl(0, 81%, 45%);
+}
+
+@media (max-width: 924px) {
+  .todo-card {
+    width: 100%;
+  }
+}
+@media (max-width: 540px) {
+  .main-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+@media (max-width: 390px) {
+  .update-name {
+    padding: 8px 20px;
+  }
+  .todo-header {
+    width: 300px;
+    height: 300px;
+  }
+  .todo-card-select {
+    padding: 1px;
+  }
+
+  .main-top {
+    padding: 4px;
+  }
+}
