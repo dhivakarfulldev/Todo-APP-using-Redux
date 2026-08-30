@@ -1,7 +1,7 @@
 import Header from "./components/Header";
 import Main from "./components/Main";
 import "./App.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -13,44 +13,72 @@ import {
 } from "./slices/todoSlice";
 
 const App = () => {
+  const [isloading, setisLoading] = useState(false);
   const state = useSelector((state) => state.todo.todos);
   const filterstate = useSelector((state) => state.todo.filter);
   const dispatch = useDispatch();
 
   const Gettodo = async () => {
-    const res = await axios.get("/TodoApp");
-    dispatch(getTodo(res.data));
+    try {
+      setisLoading(true);
+      const res = await axios.get("/TodoApp");
+      dispatch(getTodo(res.data));
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setisLoading(false);
+    }
   };
 
   const addtodo = async (tododata) => {
-    const res = await axios.post("/TodoApp", {
+    try {
+      const res = await axios.post("/TodoApp", {
       Todoname: tododata.todoname,
       Tododesc: tododata.tododesc,
       status: "Not Completed",
     });
 
     dispatch(addTodo(res.data));
+    } catch (error) {
+      console.log(error);
+      
+    }
   };
 
   const updatetodoStatus = async (tododata) => {
-    dispatch(updateTodostatus(tododata));
+    try {
+      dispatch(updateTodostatus(tododata));
     await axios.put(`/TodoApp/${tododata.todoId}`, {
       status: tododata.todoStatus,
     });
+    } catch (error) {
+      console.log(error);
+      
+    }
   };
 
   const deletetodo = async (tododata) => {
-    dispatch(deleteTodo(tododata));
+    try {
+      dispatch(deleteTodo(tododata));
     await axios.delete(`/TodoApp/${tododata.todoId}`);
+    } catch (error) {
+      console.log(error);
+      
+    }
   };
 
   const edittodo = async (tododata) => {
-    dispatch(editTodo(tododata));
+   try {
+     dispatch(editTodo(tododata));
     const res = await axios.put(`TodoApp/${tododata.todoId}`, {
       Todoname: tododata.Todoname,
       Tododesc: tododata.Tododesc,
     });
     console.log(res.data);
+   } catch (error) {
+    console.log(error);
+    
+   }
   };
 
   const filtertodos = state.filter((todo) => {
@@ -67,14 +95,18 @@ const App = () => {
       <div className="todo-container">
         <h1>Todo App</h1>
         <Header addtodo={addtodo} />
-        <Main
-          todos={filtertodos}
-          filter={filterstate}
-          updatetodoStatus={updatetodoStatus}
-          deletetodo={deletetodo}
-          edittodo={edittodo}
-          dispatch={dispatch}
-        />
+        {isloading ? (
+          <p className="loader">Loading....</p>
+        ) : (
+          <Main
+            todos={filtertodos}
+            filter={filterstate}
+            updatetodoStatus={updatetodoStatus}
+            deletetodo={deletetodo}
+            edittodo={edittodo}
+            dispatch={dispatch}
+          />
+        )}
       </div>
     </>
   );

@@ -164,6 +164,10 @@ body {
 .red-btn {
   background-color: #e93232;
 }
+.loader{
+    margin-top: 50px;
+    color: #ffe2af;
+}
 .update-field:focus {
   outline: 3px solid #e37434;
 }
